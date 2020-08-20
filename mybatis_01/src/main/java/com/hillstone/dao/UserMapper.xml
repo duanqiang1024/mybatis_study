@@ -2,7 +2,8 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!--namespace绑定一个对应的Dao/Mapper接口-->
+
+<!--namespace is bound to a corresponding Dao/Mapper interface-->
 <mapper namespace="com.hillstone.dao.UserDao">
 
     <select id="getUserList" resultType="com.hillstone.pojo.User">
