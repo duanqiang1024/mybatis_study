@@ -3,7 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
-<!-- configuration Core profile -->
+<!-- configuration Core profile-->
+<!--configuration核心配置文件-->
 <configuration>
     <environments default="development">
         <environment id="development">
@@ -18,6 +19,7 @@
     </environments>
 
     <!--Each mapper.xml needs to be registered in the mybatis core configuration file-->
+    <!--每一个Mapper.xml都需要在Mybatis核心配置文件中注册-->
     <mappers>
         <mapper resource="com/hillstone/dao/UserMapper.xml"/>
     </mappers>
