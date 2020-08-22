@@ -4,10 +4,39 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!--namespace is bound to a corresponding Dao/Mapper interface-->
-<mapper namespace="com.hillstone.dao.UserDao">
+<mapper namespace="com.hillstone.dao.UserMapper">
 
     <select id="getUserList" resultType="com.hillstone.pojo.User">
         select * from mybatis.user
     </select>
+
+    <select id="getUserLike" resultType="com.hillstone.pojo.User">
+        select * from mybatis.user where name like #{value};
+    </select>
+
+    <select id="getUserListById" parameterType="int" resultType="com.hillstone.pojo.User">
+        select * from mybatis.user where id = #{id};
+    </select>
+
+    <select id="getUserListById2" parameterType="map" resultType="com.hillstone.pojo.User">
+        select * from mybatis.user where id = #{userId} and name = #{userName};
+    </select>
+
+    <insert id="addUser" parameterType="com.hillstone.pojo.User">
+        insert into mybatis.user (id,name,pwd) values (#{id},#{name},#{pwd});
+    </insert>
+
+    <!--对象中的属性，可以直接提取出来，传递map的key-->
+    <insert id="addUser2" parameterType="map">
+        insert into mybatis.user (id,name,pwd) values (#{userId},#{userName},#{passWord});
+    </insert>
+
+    <update id="updateUser" parameterType="com.hillstone.pojo.User">
+        update mybatis.user set name = #{name} , pwd = #{pwd}  where id = #{id};
+    </update>
+
+    <delete id="deleteUser" parameterType="int">
+        delete from mybatis.user where id = #{id};
+    </delete>
 
 </mapper>
