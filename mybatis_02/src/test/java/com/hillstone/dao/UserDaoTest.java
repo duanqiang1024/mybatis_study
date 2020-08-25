@@ -27,36 +27,11 @@ public class UserDaoTest {
         sqlSession.close();
     }
 
-    @Test  //模糊查询用户
-    public void getUserLike() {
-        SqlSession sqlSession = MybatisUtils.getSqlSession();
-        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-        List<User> userList = mapper.getUserLike("%哥%");
-        for (User user : userList) {
-            System.out.println(user);
-        }
-
-        sqlSession.close();
-    }
-
     @Test  //测试通过ID查询用户
     public void getUserList() {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         User user = mapper.getUserListById(2);
-        System.out.println(user);
-
-        sqlSession.close();
-    }
-
-    @Test  //测试通过多个参数查询用户
-    public void getUserList2() {
-        SqlSession sqlSession = MybatisUtils.getSqlSession();
-        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("userId",1);
-        map.put("userName","强哥");
-        User user = mapper.getUserListById2(map);
         System.out.println(user);
 
         sqlSession.close();
@@ -75,28 +50,12 @@ public class UserDaoTest {
         sqlSession.close();
     }
 
-    @Test
-    public void addUser2(){
-        SqlSession sqlSession = MybatisUtils.getSqlSession();
-        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-
-        Map<String,Object> map = new HashMap<String, Object>();
-        map.put("userId",6);
-        map.put("userName","Hello");
-        map.put("passWord","abc");
-
-        mapper.addUser2(map);
-
-        //提交事务
-        sqlSession.commit();
-        sqlSession.close();
-    }
 
     @Test
     public void updateUser(){
         SqlSession sqlSession = MybatisUtils.getSqlSession();
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-        mapper.updateUser(new User(5,"TEST","123"));
+        mapper.updateUser(new User(6,"TEST","123"));
 
         sqlSession.commit();
         sqlSession.close();
@@ -111,6 +70,5 @@ public class UserDaoTest {
         sqlSession.commit();
         sqlSession.close();
     }
-
 
 }
