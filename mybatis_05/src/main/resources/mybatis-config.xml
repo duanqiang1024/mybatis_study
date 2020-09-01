@@ -19,6 +19,7 @@
         <setting name="logImpl" value="STDOUT_LOGGING"/>
     </settings>
 
+
     <!--可以给实体类起别名-->
     <typeAliases>
         <package name="com.hillstone.pojo"/>
@@ -36,13 +37,9 @@
         </environment>
     </environments>
 
-    <!--Each mapper.xml needs to be registered in the mybatis core configuration file-->
-    <!--每一个Mapper.xml都需要在Mybatis核心配置文件中注册-->
+    <!--绑定接口-->
     <mappers>
-        <!--<mapper resource="com/hillstone/dao/UserMapper.xml"/>-->
-        <!--<mapper class="com.hillstone.dao.UserMapper"/>-->
-        <package name="com.hillstone.dao"/>
+        <mapper class="com.hillstone.dao.UserMapper"/>
     </mappers>
-
 
 </configuration>
