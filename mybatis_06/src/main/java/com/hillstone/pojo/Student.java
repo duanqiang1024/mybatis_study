@@ -1,23 +1,19 @@
 package com.hillstone.pojo;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+public class Student {
 
-//实体类
-
-public class User {
     private int id;
     private String name;
-    private String password;
+    //学生需要关联一个老师
+    private Teacher teacher;
 
-    public User() {
+    public Student() {
     }
 
-    public User(int id, String name, String password) {
+    public Student(int id, String name, Teacher teacher) {
         this.id = id;
         this.name = name;
-        this.password = password;
+        this.teacher = teacher;
     }
 
     public int getId() {
@@ -36,20 +32,20 @@ public class User {
         this.name = name;
     }
 
-    public String getPassword() {
-        return password;
+    public Teacher getTeacher() {
+        return teacher;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 
     @Override
     public String toString() {
-        return "User{" +
+        return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
+                ", teacher=" + teacher +
                 '}';
     }
 }

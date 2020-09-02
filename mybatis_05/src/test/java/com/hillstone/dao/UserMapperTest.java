@@ -43,7 +43,7 @@ public class UserMapperTest {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
         int i = userMapper.addUser(new User(8, "Mybatis", "xyz"));
-        System.out.println("i:"+i);
+        System.out.println("i="+i);
 
         sqlSession.close();
     }
@@ -53,10 +53,17 @@ public class UserMapperTest {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 
-        userMapper.updateUser(new User(8,"Mybatis_study","987"));
+        userMapper.updateUser(new User(8,"MybatisTest","798"));
 
         sqlSession.close();
+    }
 
-
+    @Test
+    public void deleteUser(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        int i = userMapper.deleteUser("111");
+        System.out.println("i="+i);
+        sqlSession.close();
     }
 }
