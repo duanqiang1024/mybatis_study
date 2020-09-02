@@ -11,7 +11,7 @@ import java.util.List;
 public class UserMapperTest {
 
     @Test
-    public void test(){
+    public void test() {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
         //底层主要应用反射
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
@@ -22,5 +22,41 @@ public class UserMapperTest {
         }
 
         sqlSession.close();
+    }
+
+
+    @Test
+    public void getUserById() {
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+        User user = userMapper.getUserById(1);
+
+        System.out.println(user);
+
+        sqlSession.close();
+    }
+
+
+    @Test
+    public void addUser(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        int i = userMapper.addUser(new User(8, "Mybatis", "xyz"));
+        System.out.println("i:"+i);
+
+        sqlSession.close();
+    }
+
+    @Test
+    public void updateUser(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+        userMapper.updateUser(new User(8,"Mybatis_study","987"));
+
+        sqlSession.close();
+
+
     }
 }
