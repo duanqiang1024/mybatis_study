@@ -4,4 +4,42 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!--namespace is bound to a corresponding Dao/Mapper interface-->
-<mapper namespace="com.hillstone.dao.StudentMapper"/>
+<mapper namespace="com.hillstone.dao.StudentMapper">
+
+    <!--方法一：按照查询嵌套处理-->
+<!--思路，1、查询所有学生的信息
+          2、根据查询出来学生的id,寻找对应的老师，子查询-->
+<!--    <select id="getTeacher" resultType="Teacher">
+        select * from mybatis.teacher where id = #{id};
+    </select>
+
+    <resultMap id="StudentTeacher" type="Student">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        &lt;!&ndash;复杂的属性，我们需要单独处理，对象：association 集合 ： collection&ndash;&gt;
+        <association property="teacher" column="tid" javaType="Teacher" select="getTeacher"/>
+    </resultMap>
+
+    <select id="getStudent" resultMap="StudentTeacher">
+        select * from mybatis.student;
+    </select>-->
+    <!--方法二：按照结果嵌套查询-->
+
+
+
+
+    <resultMap id="StudentTeacher" type="Student">
+        <result property="id" column="sid"/>
+        <result property="name" column="sname"/>
+
+        <association property="teacher" javaType="Teacher">
+            <result property="name" column="tname"/>
+            <result property="id" column="tid"/>
+        </association>
+    </resultMap>
+
+    <select id="getStudent" resultMap="StudentTeacher">
+        select st.id sid,st.name sname,tc.id tid ,tc.name tname  from  mybatis.student  st ,mybatis.teacher tc where st.tid = tc.id;
+    </select>
+
+ </mapper>
