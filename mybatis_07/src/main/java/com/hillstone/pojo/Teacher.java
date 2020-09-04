@@ -5,7 +5,7 @@ import java.util.List;
 public class Teacher {
     private int id;
     private String name;
-
+   //一个老师拥有多名学生
     private List<Student> student;
 
     public Teacher() {
