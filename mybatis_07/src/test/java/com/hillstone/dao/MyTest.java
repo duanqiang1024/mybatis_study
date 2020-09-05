@@ -24,7 +24,7 @@ public class MyTest {
         sqlSession.close();
     }
 
-    @Test
+    @Test//按照结果查询
     public void getTeacherById(){
 
         SqlSession sqlSession = MybatisUtils.getSqlSession();
@@ -36,10 +36,21 @@ public class MyTest {
         /*
         * Teacher{id=1,
         * name='段老师',
-        * student=[Student{id=1, name='小明', tid=0}, Student{id=2, name='小红', tid=0}, Student{id=3, name='小张', tid=0}, Student{id=4, name='小李', tid=0}, Student{id=5, name='小王', tid=0}]}
-
+        * student=[Student{id=1, name='小明', tid=0},
+        *          Student{id=2, name='小红', tid=0},
+        *          Student{id=3, name='小张', tid=0},
+        *          Student{id=4, name='小李', tid=0},
+        *          Student{id=5, name='小王', tid=0}]}
          * */
     }
 
+    @Test
+    public void getTeacherById2(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        TeacherMapper teacherMapper = sqlSession.getMapper(TeacherMapper.class);
+        Teacher teacher = teacherMapper.getTeacherById2(1);
+        System.out.println(teacher);
 
+        sqlSession.close();
+    }
 }
