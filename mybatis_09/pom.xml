@@ -11,13 +11,13 @@
 
     <artifactId>mybatis_09</artifactId>
 
-    <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-ehcache -->
+<!--    <dependencies>
+        &lt;!&ndash; https://mvnrepository.com/artifact/org.mybatis/mybatis-ehcache &ndash;&gt;
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-ehcache</artifactId>
             <version>1.0.0</version>
         </dependency>
-    </dependencies>
+    </dependencies>-->
 
 </project>
