@@ -11,6 +11,7 @@
 
     <artifactId>mybatis_09</artifactId>
 
+    <!--测试用缓存，测试完毕，注释掉-->
 <!--    <dependencies>
         &lt;!&ndash; https://mvnrepository.com/artifact/org.mybatis/mybatis-ehcache &ndash;&gt;
         <dependency>

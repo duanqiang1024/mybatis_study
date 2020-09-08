@@ -7,7 +7,7 @@
 <mapper namespace="com.hillstone.dao.UserMapper">
 
     <!--在当前Mapper.xml中使用二级缓存-->
-    <cache/>
+    <!--<cache type="org.mybatis.caches.ehcache.EhcacheCache"/>-->
 
     <select id="queryUserById" resultType="user">
         select * from mybatis.user where id = #{id}
